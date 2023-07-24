@@ -23,12 +23,12 @@ function Home() {
       });
   }, []);
 
-  // fonction filter (comme find) = renvoie un nouveau tableau, passe test true/false =  si hiddenArticles n'est pas trouvé dans articlesdata on l'affiche, si non ne passe pas le test n'est pas affiché
+  // si hiddenArticles n'est pas trouvé dans articlesdata on l'affiche, si non ne passe pas le test n'est pas affiché
 
   const filteredArticles = articlesData.filter((data) => !hiddenArticles.includes(data.title));
 
 
-// on utilise le reducer pour créer une props isBookmarked et l'exporter dans les composants
+// on crée une propriété isBookmarked et on lui assigne une valeur
 
   const articles = filteredArticles.map((data, i) => {
     const isBookmarked = bookmarks.some(bookmark => bookmark.title === data.title);
