@@ -31,7 +31,7 @@ function Header() {
   // fetch de la route signup avec récupération/comparaison des données des états et transmission du token au reducer
 
   const handleRegister = () => {
-    fetch('https://news-site-backend-six.vercel.app/', {
+    fetch('https://news-site-backend-pi.vercel.app/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: signUpUsername, password: signUpPassword }),
@@ -49,7 +49,7 @@ function Header() {
     // fetch de la route signin avec récupération/comparaison des données des états et transmission du token au reducer
     
   const handleConnection = () => {
-    fetch('https://news-site-backend-six.vercel.app/users/signin', {
+    fetch('https://news-site-backend-pi.vercel.app/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: signInUsername, password: signInPassword }),

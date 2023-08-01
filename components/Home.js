@@ -15,7 +15,7 @@ function Home() {
   // fetch de la route pour display les articles
 
   useEffect(() => {
-    fetch('https://news-site-backend-six.vercel.app/articles')
+    fetch('https://news-site-backend-pi.vercel.app/articles')
       .then(response => response.json())
       .then(data => {
 
