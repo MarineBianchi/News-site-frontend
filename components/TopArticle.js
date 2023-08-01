@@ -19,7 +19,7 @@ function TopArticle(props) {
 
     // on fetch la route permettant à l’utilisateur d'ajouter ou supprimer un bookmark et on met à jour le reducer grace aux props
 
-    fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
+    fetch(`https://news-site-backend-six.vercel.app/users/canBookmark/${user.token}`)
       .then(response => response.json())
       .then(data => {
         if (data.result && data.canBookmark) {

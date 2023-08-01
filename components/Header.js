@@ -31,7 +31,7 @@ function Header() {
   // fetch de la route signup avec récupération/comparaison des données des états et transmission du token au reducer
 
   const handleRegister = () => {
-    fetch('http://localhost:3000/users/signup', {
+    fetch('https://news-site-backend-six.vercel.app/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: signUpUsername, password: signUpPassword }),
@@ -49,7 +49,7 @@ function Header() {
     // fetch de la route signin avec récupération/comparaison des données des états et transmission du token au reducer
     
   const handleConnection = () => {
-    fetch('http://localhost:3000/users/signin', {
+    fetch('https://news-site-backend-six.vercel.app/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: signInUsername, password: signInPassword }),
@@ -95,6 +95,7 @@ function Header() {
   }
 
   // Message de bienvenue si l'utilisateur est connecté
+  
   let userSection;
   if (user.token) {
     userSection = (

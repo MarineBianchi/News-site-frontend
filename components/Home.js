@@ -15,33 +15,35 @@ function Home() {
   // fetch de la route pour display les articles
 
   useEffect(() => {
-    fetch('http://localhost:3000/articles')
+    fetch('https://news-site-backend-six.vercel.app/articles')
       .then(response => response.json())
       .then(data => {
+
+        // met à jour l'état topArticle avec le premier article  et l'état articlesData avec les articles restants
         setTopArticle(data.articles[0]);
         setArticlesData(data.articles.filter((data, i) => i > 0));
       });
   }, []);
 
-  // si hiddenArticles n'est pas trouvé dans articlesdata on l'affiche, si non ne passe pas le test n'est pas affiché
+  // si hiddenArticles n'est pas trouvé dans articlesdata on le stock dans filteredArticles, si non ne passe pas le test n'est pas stocké
 
   const filteredArticles = articlesData.filter((data) => !hiddenArticles.includes(data.title));
 
 
-// on crée une propriété isBookmarked et on lui assigne une valeur
-
   const articles = filteredArticles.map((data, i) => {
+
+// Détermine si un article est mis en bookmark en vérifiant si son titre est présent dans le tableau bookmarks 
+
     const isBookmarked = bookmarks.some(bookmark => bookmark.title === data.title);
     return <Article key={i} {...data} isBookmarked={isBookmarked} />;
   });
 
 
-  if (bookmarks.some(bookmark => bookmark.title === topArticle.title)) {
-    topArticles = <TopArticle {...topArticle} isBookmarked={true} />
-  } else {
-    topArticles = <TopArticle {...topArticle} isBookmarked={false} />
-  }
-
+  const isBookmarked = bookmarks.some(bookmark => bookmark.title === topArticle.title);
+  
+    const topArticles = <TopArticle {...topArticle} isBookmarked={isBookmarked} />
+  
+  
   return (
     <div>
       <Head>
